@@ -2,6 +2,7 @@ package no.hvl.dat100.jplab12.oppgave3;
 
 import no.hvl.dat100.jplab12.common.TODO;
 import no.hvl.dat100.jplab12.oppgave1.*;
+import no.hvl.dat100.jplab12.oppgave2.Tekst;
 
 public class Blogg {
 
@@ -16,7 +17,7 @@ public class Blogg {
 	public Blogg(int lengde) {
 		innleggtabell = new Innlegg[lengde];
 	}
-
+	
 	public int getAntall() {
 		return nesteledig;
 	}
@@ -26,7 +27,7 @@ public class Blogg {
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
-		if(nesteledig != 0) {
+		if(getAntall() > 0) {
 			for(int i = 0; i < nesteledig; i++) {
 				if(innleggtabell[i].erLik(innlegg))
 					return i;
@@ -37,7 +38,7 @@ public class Blogg {
 	}
 
 	public boolean finnes(Innlegg innlegg) {
-		if(nesteledig != 0) {
+		if(getAntall() > 0) {
 			for(int i = 0; i < nesteledig; i++) {
 				if(innleggtabell[i].erLik(innlegg))
 					return true;
@@ -66,10 +67,10 @@ public class Blogg {
 	}
 	
 	public String toString() {
-		String txt = innleggtabell.length +"\n";
+		String txt = getAntall() +"\n";
 		
-		for(Innlegg innlegg : innleggtabell) {
-			txt += innlegg.toString();
+		for(int i = 0; i < getAntall(); i++) {
+			txt += innleggtabell[i].toString();
 		}
 		
 		return txt;
@@ -98,18 +99,11 @@ public class Blogg {
 	
 	public boolean slett(Innlegg innlegg) {
 		
-		// ...riktig?
-		if(finnes(innlegg)) {
-			
-			innleggtabell[finnInnlegg(innlegg)] = innleggtabell[nesteledig-1];
-			nesteledig--;
-			
-			return true;
-		}
-		
-		return false;
+		throw new UnsupportedOperationException(TODO.method());
 	}
 	
+	// Testing
+
 	public int[] search(String keyword) {
 		
 		throw new UnsupportedOperationException(TODO.method());
